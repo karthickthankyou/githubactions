@@ -1,5 +1,5 @@
 {
-  "name": "githubactions",
+  "name": "visreg",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -7,9 +7,9 @@
     "@testing-library/react": "^11.2.6",
     "@testing-library/user-event": "^12.8.3",
     "@types/jest": "^26.0.23",
-    "@types/node": "^12.20.13",
+    "@types/node": "^12.20.12",
     "@types/react": "^17.0.5",
-    "@types/react-dom": "^17.0.5",
+    "@types/react-dom": "^17.0.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
@@ -20,12 +20,28 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "storybook": "start-storybook -p 6006 -s public",
+    "build-storybook": "build-storybook -s public",
+    "prettier": "prettier --ignore-path .gitignore \"**/*.{js,ts,json,css}\"",
+    "format:write": "npm run prettier -- --write",
+    "format:check": "npm run prettier -- --check",
+    "format:diff": "npm run prettier -- --list-different"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest"
+    ],
+    "overrides": [
+      {
+        "files": [
+          "**/*.stories.*"
+        ],
+        "rules": {
+          "import/no-anonymous-default-export": "off"
+        }
+      }
     ]
   },
   "browserslist": {
@@ -39,5 +55,14 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@storybook/addon-actions": "^6.2.9",
+    "@storybook/addon-essentials": "^6.2.9",
+    "@storybook/addon-links": "^6.2.9",
+    "@storybook/node-logger": "^6.2.9",
+    "@storybook/preset-create-react-app": "^3.1.7",
+    "@storybook/react": "^6.2.9",
+    "prettier": "^2.3.0"
   }
 }
