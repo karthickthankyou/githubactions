@@ -1,9 +1,9 @@
 name: CI
 on:
   pull_request:
-    branches: [develop]
+    branches: [develop, master]
   push:
-    branches: [develop]
+    branches: [develop, master]
 
 jobs:
   build:
@@ -42,6 +42,11 @@ jobs:
           name: code-build
           path: build
       - uses: actions/download-artifact@v2
+      - name: Create a release
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+        run: npx semantic-release
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
       - name: Deploy Project
         if: github.event_name == 'push'
         run: npx surge --project ./build --domain messy-push.surge.sh/
