@@ -42,6 +42,11 @@ jobs:
           name: code-build
           path: build
       - uses: actions/download-artifact@v2
+      - name: Zip assets
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+        run: |
+          zip -r build.zip ./build
+          zip -r coverage.zip ./coverage
       - name: Create a release
         if: github.event_name == 'push' && github.ref == 'refs/heads/master'
         run: npx semantic-release
