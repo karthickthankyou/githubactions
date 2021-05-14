@@ -16,7 +16,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React in an easy way! To surge NoW!
+          Learn React in an easy way! To surge NoW! Artifacts!
         </a>
       </header>
     </div>
