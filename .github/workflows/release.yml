@@ -13,4 +13,4 @@ jobs:
           --data '{"text":"New Release ${{
           github.event.release.tag_name }} is out!, <${{
           github.event.release.html_url }}|check it out
-          now.>"}' ${{ secrets.SLACK_WEBHOOK }}
+          now.>"}' https://hooks.slack.com/services/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
